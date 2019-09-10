@@ -1,0 +1,1 @@
+# Paralelismo-en-procesamiento-de-imagenes
