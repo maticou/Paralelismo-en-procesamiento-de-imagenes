@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+
 int proceso;
 int algoritmo;
 int estructura;
+double time_spent2;
+clock_t begin2;
 char nombreImagen[50];
 FILE *arch,*sali;
 unsigned char c,c1,c2;
@@ -218,12 +222,22 @@ void cerrarArchivo(char nombreArchivo[50]){
 			fprintf(sali,"%c",otra[i][j]);
 		}
 	}
+	clock_t end2 = clock();
+	time_spent2 += (double)(end2 - begin2)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo completo (abrir, procesar y cerrar imagen) fue %f segundos\n", time_spent2);
 	sleep(1);
 }
 
 //Tipo T
-void dilatacionSecuencialT(){	
+void dilatacionSecuencialT(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -240,15 +254,27 @@ void dilatacionSecuencialT(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo T fue %f segundos\n", time_spent);
+
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialT.pgm"));
 }
 
 void dilatacionParalelaT(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialT(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -265,18 +291,29 @@ void erosionSecuencialT(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo T fue %f segundos\n", time_spent);
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialT.pgm"));
 }
 
 void erosionParalelaT(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 
 
 //Tipo L
 void dilatacionSecuencialL(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -293,15 +330,26 @@ void dilatacionSecuencialL(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo L fue %f segundos\n", time_spent);
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialL.pgm"));
 }
 
 void dilatacionParalelaL(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialL(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+	
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -318,18 +366,29 @@ void erosionSecuencialL(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo L fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialL.pgm"));
 }
 
 void erosionParalelaL(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 
 
 //Tipo Vertical (|)
 void dilatacionSecuencialVertical(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+	
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -346,15 +405,26 @@ void dilatacionSecuencialVertical(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo vertical fue %f segundos\n", time_spent);
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialVertical.pgm"));
 }
 
 void dilatacionParalelaVertical(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialVertical(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -371,18 +441,29 @@ void erosionSecuencialVertical(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo vertical fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialVertical.pgm"));
 }
 
 void erosionParalelaVertical(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 
 
 //Tipo Horizontal (-)
 void dilatacionSecuencialHorizontal(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -398,15 +479,26 @@ void dilatacionSecuencialHorizontal(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo horizontal fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialHorizontal.pgm"));
 }
 
 void dilatacionParalelaHorizontal(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialHorizontal(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -422,18 +514,29 @@ void erosionSecuencialHorizontal(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo horizontal fue %f segundos\n", time_spent);
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialHorizontal.pgm"));
 }
 
 void erosionParalelaHorizontal(){
-	
+	printf("Tecnica no implementada\n");	
 }
 
 
 
 //Tipo X
 void dilatacionSecuencialX(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -452,15 +555,26 @@ void dilatacionSecuencialX(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo X fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialX.pgm"));
 }
 
 void dilatacionParalelaX(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialX(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -479,18 +593,29 @@ void erosionSecuencialX(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo X fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialX.pgm"));
 }
 
 void erosionParalelaX(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 
 
 //Tipo Suma (+)
 void dilatacionSecuencialSuma(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int max =0;
@@ -509,15 +634,26 @@ void dilatacionSecuencialSuma(){
 			otra[i][j]=max;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la dilatacion secuencual tipo + fue %f segundos\n", time_spent);
 	cerrarArchivo(strcat(nombreImagen, "_dilatacionSecuencialSuma.pgm"));
 }
 
 void dilatacionParalelaSuma(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 void erosionSecuencialSuma(){
+	time_spent2 = 0.0;		
+	begin2 = clock();
+
 	abrirArchivo();
+
+	double time_spent = 0.0;
+	clock_t begin = clock();
+
 	for(i=1; i<fila-1; i++){
 		for(j=1; j<colu-1; j++){
 			int min =255;
@@ -536,11 +672,15 @@ void erosionSecuencialSuma(){
 			otra[i][j]=min;
 		}
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
+	printf("\nEl tiempo de la erosion secuencual tipo + fue %f segundos\n", time_spent);	
 	cerrarArchivo(strcat(nombreImagen, "_erosionSecuencialSuma.pgm"));
 }
 
 void erosionParalelaSuma(){
-	
+	printf("Tecnica no implementada\n");
 }
 
 
