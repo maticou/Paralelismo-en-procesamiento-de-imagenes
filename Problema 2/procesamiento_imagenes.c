@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <pthread.h>
+#include <stdlib.h>
 
+#define num_hilos 20
 int proceso;
 int algoritmo;
 int estructura;
@@ -818,7 +821,7 @@ void *erosion(void *arg){
 void erosionParalelaSuma(){
 	unsigned char c, c1, c2;
 
-	arch=fopen("4.pgm","rb");
+	arch=fopen("5.pgm","rb");
 	c1=fgetc(arch);
 	c2=fgetc(arch);
 
